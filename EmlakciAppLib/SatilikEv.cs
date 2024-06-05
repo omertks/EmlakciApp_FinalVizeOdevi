@@ -11,38 +11,36 @@ namespace EmlakciAppLib
 
         public SatilikEv(string odaSayisi, int katNumarasi, int alani,int fiyati) :base(odaSayisi,katNumarasi,alani)
         {
-            this.fiyati = fiyati;
+            this.fiyati = Ev.PozitifKontrol(fiyati,"Fiyat"); //
         }
 
         public override void EvYazdir()
         {
-            Console.WriteLine($"Oda Sayısı: {this.odaSayisi} KatNo: {this.katNumarasi} Alanı: {this.alani} metrekare Fiyat: {this.fiyati} Tl");
+            Console.WriteLine($"Oda Sayısı: {this.odaSayisi}\t KatNo: {this.katNumarasi}\t Alanı: {this.alani}\t metrekare\t Fiyat: {this.fiyati} Tl");
             Console.WriteLine();
         }
 
-        public override void EvKaydet() // bunu static yapmayada bilirdim
+        public override void EvKaydet()
         {
             string line;
-            StreamReader sr = new StreamReader("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\satilikevler.txt");
+            StreamReader sr = new StreamReader("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\satilikevler.txt"); //
             line = sr.ReadToEnd();
             sr.Close();
 
-            StreamWriter sw = new StreamWriter("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\satilikevler.txt");
+            StreamWriter sw = new StreamWriter("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\satilikevler.txt"); //
             sw.Write(line + $",{this.odaSayisi},{this.katNumarasi},{this.alani},{this.fiyati}");
             sw.Close();
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Ev Bilgileri Kaydedildi !!!");
             Console.ForegroundColor = ConsoleColor.White;
-
         }
-
 
         public static List<SatilikEv> SatilikEvleriGetir()
         {
             var satilikEvler = new List<SatilikEv>();
             string odasay = "";
-            int katsay = 0, alan = 0,  fiyati = 0;
+            int katsay = 0, alan = 0, fiyati = 0;
             StreamReader sr;
             string line;
             sr = new StreamReader("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\satilikevler.txt");
@@ -55,7 +53,7 @@ namespace EmlakciAppLib
                 {
                     string deger = "";
                     int j = 0;
-                    if (line.Length >= i + 1)
+                    if (line.Length >= i + 1) 
                     {
                         j = i + 1;
                     }
@@ -82,10 +80,10 @@ namespace EmlakciAppLib
                     else if (count == 4)
                     {
                         fiyati = Convert.ToInt32(deger);
-                        satilikEvler.Add(new SatilikEv(odasay, katsay, alan, fiyati));  // Nesneleri oluşturup Col a atma
+                        satilikEvler.Add(new SatilikEv(odasay, katsay, alan, fiyati));  // Nesneleri oluşturup Collections a atma
                         count = 0;
                     }
-                    i = j - 1; //
+                    i = j - 1; // hızı arttırmak için
                 }
 
             }

@@ -9,18 +9,24 @@ namespace EmlakciApp_FinalVizeOdevi
         {
             for (; ;) // ben ekledim aslında yoktu 
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("------------------------------------------------------------------"); // Arada Boşluk Olaası İçin
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("-----------------------------Emlakçı---App----------------------------"); // Arada Boşluk Olaası İçin
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine("1- Kiralık Ev \n2- Satılık Ev \n3- Programdan Çık");
                 string secim1 = Console.ReadLine();
                 if (secim1 == "1")
                 {
+                    Console.Clear(); /*   Silinebilir*/
                     Console.WriteLine("1- Kayıtlı Ev Görüntüle \n2- Yeni Ev Gir");
                     string secim2 = Console.ReadLine();
                     if (secim2 == "1")
                     {
+                        Console.Clear(); /*    Silinebilir*/
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Kiralık Evler: ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine();
                         var kayitlikiralikevler = KiralikEv.KiralikEvleriGetir();
                         Console.WriteLine();
                         foreach (KiralikEv item in kayitlikiralikevler)
@@ -30,6 +36,7 @@ namespace EmlakciApp_FinalVizeOdevi
                     }
                     else if (secim2 == "2")
                     {
+                        Console.Clear(); /*    Silinebilir*/
                         bool td;
                         do
                         {
@@ -53,27 +60,31 @@ namespace EmlakciApp_FinalVizeOdevi
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Hatalı Seçim"); // Burayı Düzenle
-                        Console.ForegroundColor = ConsoleColor.White;
+                        HataDondur("Hatalı Seçim");
                     }
                 }
-                if (secim1 == "2")
+                else if (secim1 == "2")
                 {
+                    Console.Clear(); /*    Silinebilir*/
                     Console.WriteLine("1- Kayıtlı Ev Görüntüle \n2- Yeni Ev Gir");
                     string secim2 = Console.ReadLine();
                     if (secim2 == "1")
                     {
+                        Console.Clear(); /*    Silinebilir*/
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Satılık Evler: ");
+                        Console.ForegroundColor= ConsoleColor.White;
+                        Console.WriteLine();
                         var kayitliSatilikEvler = SatilikEv.SatilikEvleriGetir();
                         Console.WriteLine();
                         foreach (SatilikEv item in kayitliSatilikEvler)
                         {
                             item.EvYazdir();
                         }
-
                     }
                     else if (secim1 == "2")
                     {
+                        Console.Clear(); /*    Silinebilir*/
                         bool td;
                         do
                         {
@@ -95,16 +106,26 @@ namespace EmlakciApp_FinalVizeOdevi
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Hatalı Seçim"); // Burayı Düzenle
-                        Console.ForegroundColor = ConsoleColor.White;
+                        HataDondur("Hatalı Seçim");
                     }
                 }
-                if (secim1 == "3")
+                else if (secim1 == "3")
                 {
-                    break;
+                    break; // 
+                }
+                else
+                {
+                    HataDondur("Hatalı Seçim");
                 }
             }
+        }
+
+        public static void HataDondur(string mesaj) // static ?
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(mesaj); // Burayı Düzenle
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

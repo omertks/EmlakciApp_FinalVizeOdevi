@@ -16,13 +16,13 @@ namespace EmlakciAppLib
 
         public KiralikEv(string odaSayisi, int katNumarasi, int alani,int dep,int kira) : base (odaSayisi,katNumarasi, alani)
         {
-            this.depozito = dep;
-            this.kirasi = kira;
+            this.depozito = Ev.PozitifKontrol(dep,"Depozito"); //
+            this.kirasi = Ev.PozitifKontrol(kira,"Kira");      //
         }
 
         public override void EvYazdir()
         {
-            Console.WriteLine($"Oda Sayısı: {this.odaSayisi} KatNo: {this.katNumarasi} Alanı: {this.alani} metrekare Kira: {this.kirasi} Tl Depozitosu: {this.depozito} Tl");
+            Console.WriteLine($"Oda Sayısı: {this.odaSayisi}\t KatNo: {this.katNumarasi}\t Alanı: {this.alani} metrekare\t Kira: {this.kirasi} Tl\t Depozitosu: {this.depozito} Tl");
             Console.WriteLine();
         }
 

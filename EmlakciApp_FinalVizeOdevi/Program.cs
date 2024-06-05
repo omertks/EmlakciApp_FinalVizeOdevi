@@ -25,8 +25,7 @@ namespace EmlakciApp_FinalVizeOdevi
                         Console.WriteLine();
                         foreach (KiralikEv item in kayitlikiralikevler)
                         {
-                            Console.WriteLine($"Oda Sayısı: {item.odaSayisi} KatNo: {item.katNumarasi} Alanı: {item.alani} metrekare Kira: {item.kirasi} Tl Depozitosu: {item.depozito} Tl");
-                            Console.WriteLine();
+                            item.EvYazdir();
                         }
                     }
                     else if (secim2 == "2")
@@ -35,7 +34,7 @@ namespace EmlakciApp_FinalVizeOdevi
                         do
                         {
                             Console.WriteLine("Evin Oda Sayısı: ");
-                            int odaSayisi = Convert.ToInt32(Console.ReadLine());
+                            string odaSayisi = Console.ReadLine();
                             Console.WriteLine("Evin Kat Numarası: ");
                             int katNo = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Evin Alanı: ");
@@ -46,7 +45,7 @@ namespace EmlakciApp_FinalVizeOdevi
                             int depozito = Convert.ToInt32(Console.ReadLine());
 
                             KiralikEv ke = new KiralikEv(odaSayisi, katNo, alan, depozito, kira);
-                            KiralikEv.KiralikEvKaydet(ke);
+                            ke.EvKaydet();
 
                             Console.WriteLine("Tamam(t)/ Devam(d)? ");
                             td = Console.ReadLine().ToLower().Trim() == "d" ? true : false;
@@ -69,8 +68,7 @@ namespace EmlakciApp_FinalVizeOdevi
                         Console.WriteLine();
                         foreach (SatilikEv item in kayitliSatilikEvler)
                         {
-                            Console.WriteLine($"Oda Sayısı: {item.odaSayisi} KatNo: {item.katNumarasi} Alanı: {item.alani} metrekare Fiyat: {item.fiyati} Tl");
-                            Console.WriteLine();
+                            item.EvYazdir();
                         }
 
                     }
@@ -80,7 +78,7 @@ namespace EmlakciApp_FinalVizeOdevi
                         do
                         {
                             Console.WriteLine("Evin Oda Sayısı: ");
-                            int odaSayisi = Convert.ToInt32(Console.ReadLine());
+                            string odaSayisi = Console.ReadLine();
                             Console.WriteLine("Evin Kat Numarası: ");
                             int katNo = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Evin Alanı: ");
@@ -88,8 +86,8 @@ namespace EmlakciApp_FinalVizeOdevi
                             Console.WriteLine("Evin Fiyatı: ");
                             int fiyati = Convert.ToInt32(Console.ReadLine());
 
-                            SatilikEv ke = new SatilikEv(odaSayisi, katNo, alan, fiyati);
-                            SatilikEv.SatilikEvKaydet(ke);
+                            SatilikEv se = new SatilikEv(odaSayisi, katNo, alan, fiyati);
+                            se.EvKaydet(); //
 
                             Console.WriteLine("Tamam(t)/ Devam(d)? ");
                             td = Console.ReadLine().ToLower().Trim() == "d" ? true : false;

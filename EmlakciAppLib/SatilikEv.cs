@@ -7,13 +7,20 @@ namespace EmlakciAppLib
 {
     public class SatilikEv:Ev
     {
-        public int fiyati { get; set; }
+        private int fiyati { get; set; }   //
 
-        public SatilikEv(int odaSayisi, int katNumarasi, int alani,int fiyati) :base(odaSayisi,katNumarasi,alani)
+        public SatilikEv(string odaSayisi, int katNumarasi, int alani,int fiyati) :base(odaSayisi,katNumarasi,alani)
         {
             this.fiyati = fiyati;
         }
-        public static void SatilikEvKaydet(SatilikEv satilikEv) // bunu static yapmayada bilirdim
+
+        public override void EvYazdir()
+        {
+            Console.WriteLine($"Oda Sayısı: {this.odaSayisi} KatNo: {this.katNumarasi} Alanı: {this.alani} metrekare Fiyat: {this.fiyati} Tl");
+            Console.WriteLine();
+        }
+
+        public override void EvKaydet() // bunu static yapmayada bilirdim
         {
             string line;
             StreamReader sr = new StreamReader("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\satilikevler.txt");
@@ -21,7 +28,7 @@ namespace EmlakciAppLib
             sr.Close();
 
             StreamWriter sw = new StreamWriter("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\satilikevler.txt");
-            sw.Write(line + $",{satilikEv.odaSayisi},{satilikEv.katNumarasi},{satilikEv.alani},{satilikEv.fiyati}");
+            sw.Write(line + $",{this.odaSayisi},{this.katNumarasi},{this.alani},{this.fiyati}");
             sw.Close();
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -34,7 +41,8 @@ namespace EmlakciAppLib
         public static List<SatilikEv> SatilikEvleriGetir()
         {
             var satilikEvler = new List<SatilikEv>();
-            int odasay = 0, katsay = 0, alan = 0,  fiyati = 0;
+            string odasay = "";
+            int katsay = 0, alan = 0,  fiyati = 0;
             StreamReader sr;
             string line;
             sr = new StreamReader("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\satilikevler.txt");
@@ -61,7 +69,7 @@ namespace EmlakciAppLib
                     count++;
                     if (count == 1)
                     {
-                        odasay = Convert.ToInt32(deger);
+                        odasay = deger;
                     }
                     else if (count == 2)
                     {

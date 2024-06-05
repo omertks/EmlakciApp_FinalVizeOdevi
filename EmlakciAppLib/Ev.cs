@@ -6,16 +6,20 @@ namespace EmlakciAppLib
 {
     public abstract class Ev:Object
     {
-        public int odaSayisi { get; set; }
-        public int katNumarasi { get; set; }
-        public int alani { get; set; }
+        protected string odaSayisi { get; set; }
+        protected int katNumarasi { get; set; }
+        protected int alani { get; set; }
 
 
-        public Ev(int odaSayisi, int katNumarasi, int alani)
+        public Ev(string odaSayisi, int katNumarasi, int alani)
         {
             this.odaSayisi = odaSayisi;
             this.katNumarasi = katNumarasi;
             this.alani = alani;
         }
+
+        public abstract void EvYazdir(); //
+        public abstract void EvKaydet(); //
+
     }
 }

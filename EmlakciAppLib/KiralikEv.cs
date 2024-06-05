@@ -11,17 +11,22 @@ namespace EmlakciAppLib
 {
     public class KiralikEv : Ev
     {
-    
-        public int depozito { get; set; }
-        public int kirasi { get; set; }
+        private int depozito { get; set; }  //
+        private int kirasi { get; set; }    //
 
-        public KiralikEv(int odaSayisi, int katNumarasi, int alani,int dep,int kira) : base (odaSayisi,katNumarasi, alani)
+        public KiralikEv(string odaSayisi, int katNumarasi, int alani,int dep,int kira) : base (odaSayisi,katNumarasi, alani)
         {
             this.depozito = dep;
             this.kirasi = kira;
         }
 
-        public static void KiralikEvKaydet(KiralikEv kiralikEv) // bunu static yapmayada bilirdim
+        public override void EvYazdir()
+        {
+            Console.WriteLine($"Oda Sayısı: {this.odaSayisi} KatNo: {this.katNumarasi} Alanı: {this.alani} metrekare Kira: {this.kirasi} Tl Depozitosu: {this.depozito} Tl");
+            Console.WriteLine();
+        }
+
+        public override void EvKaydet() // bunu static yapmayada bilirdim
         {
             string line;
             StreamReader sr = new StreamReader("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\kiralikevler.txt");
@@ -29,7 +34,7 @@ namespace EmlakciAppLib
             sr.Close();
 
             StreamWriter sw = new StreamWriter("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\kiralikevler.txt");
-            sw.Write(line + $",{kiralikEv.odaSayisi},{kiralikEv.katNumarasi},{kiralikEv.alani},{kiralikEv.depozito},{kiralikEv.kirasi}");
+            sw.Write(line + $",{this.odaSayisi},{this.katNumarasi},{this.alani},{this.depozito},{this.kirasi}");
             sw.Close();
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -41,7 +46,8 @@ namespace EmlakciAppLib
         public static List<KiralikEv> KiralikEvleriGetir()
         {
             var kiralikEvler = new List<KiralikEv>();
-            int odasay = 0, katsay = 0, alan = 0, depoz = 0, kira = 0;
+            string odasay = "";
+            int katsay = 0, alan = 0, depoz = 0, kira = 0;
             StreamReader sr;
             string line;
             sr = new StreamReader("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\kiralikevler.txt");
@@ -68,7 +74,7 @@ namespace EmlakciAppLib
                     count++;
                     if (count == 1)
                     {
-                        odasay = Convert.ToInt32(deger);
+                        odasay = deger;
                     }
                     else if (count == 2)
                     {

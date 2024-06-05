@@ -10,16 +10,16 @@ namespace EmlakciApp_FinalVizeOdevi
             for (; ;) // ben ekledim aslında yoktu 
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("-----------------------------Emlakçı---App----------------------------"); // Arada Boşluk Olaması İçin
+                Console.WriteLine("-----------------------------Emlakçı---App----------------------------"); 
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine("1- Kiralık Ev \n2- Satılık Ev \n3- Programdan Çık");
-                string secim1 = Console.ReadLine();
+                string? secim1 = Console.ReadLine();
                 if (secim1 == "1")
                 {
                     Console.Clear(); /*   Silinebilir*/
                     Console.WriteLine("1- Kayıtlı Ev Görüntüle \n2- Yeni Ev Gir");
-                    string secim2 = Console.ReadLine();
+                    string? secim2 = Console.ReadLine();
                     if (secim2 == "1")
                     {
                         Console.Clear(); /*    Silinebilir*/
@@ -27,7 +27,7 @@ namespace EmlakciApp_FinalVizeOdevi
                         Console.WriteLine("Kiralık Evler: ");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
-                        var kayitlikiralikevler = KiralikEv.KiralikEvleriGetir();
+                        List<KiralikEv> kayitlikiralikevler = KiralikEv.KiralikEvleriGetir(); //
                         Console.WriteLine();
                         foreach (KiralikEv item in kayitlikiralikevler)
                         {
@@ -41,7 +41,7 @@ namespace EmlakciApp_FinalVizeOdevi
                         do
                         {
                             Console.WriteLine("Evin Oda Sayısı: ");
-                            string odaSayisi = Console.ReadLine();
+                            string? odaSayisi = Console.ReadLine();
                             Console.WriteLine("Evin Kat Numarası: ");
                             int katNo = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Evin Alanı: ");
@@ -55,7 +55,7 @@ namespace EmlakciApp_FinalVizeOdevi
                             ke.EvKaydet();
 
                             Console.WriteLine("Tamam(t)/ Devam(d)? ");
-                            td = Console.ReadLine().ToLower().Trim() == "d" ? true : false;
+                            td = Console.ReadLine().ToLower().Trim() == "d" ? true : false; //
                         } while (td);
                     }
                     else
@@ -75,7 +75,7 @@ namespace EmlakciApp_FinalVizeOdevi
                         Console.WriteLine("Satılık Evler: ");
                         Console.ForegroundColor= ConsoleColor.White;
                         Console.WriteLine();
-                        var kayitliSatilikEvler = SatilikEv.SatilikEvleriGetir();
+                        List<SatilikEv> kayitliSatilikEvler = SatilikEv.SatilikEvleriGetir(); //
                         Console.WriteLine();
                         foreach (SatilikEv item in kayitliSatilikEvler)
                         {
@@ -97,7 +97,7 @@ namespace EmlakciApp_FinalVizeOdevi
                             Console.WriteLine("Evin Fiyatı: ");
                             int fiyati = Convert.ToInt32(Console.ReadLine());
 
-                            SatilikEv se = new SatilikEv(odaSayisi, katNo, alan, fiyati);
+                            SatilikEv se = new SatilikEv(odaSayisi, katNo, alan, fiyati); //
                             se.EvKaydet(); //
 
                             Console.WriteLine("Tamam(t)/ Devam(d)? ");

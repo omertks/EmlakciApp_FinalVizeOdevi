@@ -10,7 +10,7 @@ namespace EmlakciApp_FinalVizeOdevi
             for (; ;) // ben ekledim aslında yoktu 
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("-----------------------------Emlakçı---App----------------------------"); // Arada Boşluk Olaası İçin
+                Console.WriteLine("-----------------------------Emlakçı---App----------------------------"); // Arada Boşluk Olaması İçin
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine("1- Kiralık Ev \n2- Satılık Ev \n3- Programdan Çık");

@@ -26,7 +26,7 @@ namespace EmlakciAppLib
             Console.WriteLine();
         }
 
-        public override void EvKaydet() // bunu static yapmayada bilirdim
+        public override void EvKaydet() 
         {
             string line;
             StreamReader sr = new StreamReader("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\kiralikevler.txt");
@@ -94,7 +94,7 @@ namespace EmlakciAppLib
                         kiralikEvler.Add(new KiralikEv(odasay,katsay,alan,depoz,kira));  // Nesneleri oluşturup Col a atma
                         count = 0;
                     }
-                    i = j - 1; //
+                    i = j - 1; // hız için
                 }
                 
             }

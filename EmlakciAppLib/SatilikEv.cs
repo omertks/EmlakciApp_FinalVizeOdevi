@@ -9,14 +9,14 @@ namespace EmlakciAppLib
     {
         private int fiyati { get; set; }   //
 
-        public SatilikEv(string odaSayisi, int katNumarasi, int alani,int fiyati) :base(odaSayisi,katNumarasi,alani)
+        public SatilikEv(int odaSayisi, int katNumarasi, int alani,int fiyati) :base(odaSayisi,katNumarasi,alani)
         {
             this.fiyati = Ev.PozitifKontrol(fiyati,"Fiyat"); //
         }
 
         public override void EvYazdir()
         {
-            Console.WriteLine($"Oda Sayısı: {this.odaSayisi}\t KatNo: {this.katNumarasi}\t Alanı: {this.alani}\t metrekare\t Fiyat: {this.fiyati} Tl");
+            Console.WriteLine($"Oda Sayısı: {this.odaSayisi}\t KatNo: {this.katNumarasi}\t Alanı: {this.alani} m{Convert.ToChar(178)}\t Fiyat: {this.fiyati} TL");
             Console.WriteLine();
         }
 
@@ -39,7 +39,7 @@ namespace EmlakciAppLib
         public static List<SatilikEv> SatilikEvleriGetir()
         {
             var satilikEvler = new List<SatilikEv>();
-            string odasay = "";
+            int odasay = 0;
             int katsay = 0, alan = 0, fiyati = 0;
             StreamReader sr;
             string line;
@@ -67,7 +67,7 @@ namespace EmlakciAppLib
                     count++;
                     if (count == 1)
                     {
-                        odasay = deger;
+                        odasay = Convert.ToInt32(deger);
                     }
                     else if (count == 2)
                     {

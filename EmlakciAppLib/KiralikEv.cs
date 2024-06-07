@@ -14,19 +14,19 @@ namespace EmlakciAppLib
         private int depozito { get; set; }  //
         private int kirasi { get; set; }    //
 
-        public KiralikEv(string odaSayisi, int katNumarasi, int alani,int dep,int kira) : base (odaSayisi,katNumarasi, alani)
+        public KiralikEv(int odaSayisi, int katNumarasi, int alani, int dep, int kira) : base(odaSayisi, katNumarasi, alani)
         {
-            this.depozito = Ev.PozitifKontrol(dep,"Depozito"); //
-            this.kirasi = Ev.PozitifKontrol(kira,"Kira");      //
+            this.depozito = Ev.PozitifKontrol(dep, "Depozito"); //
+            this.kirasi = Ev.PozitifKontrol(kira, "Kira");      //
         }
 
         public override void EvYazdir()
         {
-            Console.WriteLine($"Oda Sayısı: {this.odaSayisi}\t KatNo: {this.katNumarasi}\t Alanı: {this.alani} metrekare\t Kira: {this.kirasi} Tl\t Depozitosu: {this.depozito} Tl");
+            Console.WriteLine($"Oda Sayısı: {this.odaSayisi}\t KatNo: {this.katNumarasi}\t Alanı: {this.alani} m{Convert.ToChar(178)}\t Kira: {this.kirasi} TL\t Depozitosu: {this.depozito} Tl");
             Console.WriteLine();
         }
 
-        public override void EvKaydet() 
+        public override void EvKaydet()
         {
             string line;
             StreamReader sr = new StreamReader("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\kiralikevler.txt");
@@ -46,13 +46,14 @@ namespace EmlakciAppLib
         public static List<KiralikEv> KiralikEvleriGetir()
         {
             var kiralikEvler = new List<KiralikEv>();
-            string odasay = "";
+            int odasay = 0;
             int katsay = 0, alan = 0, depoz = 0, kira = 0;
             StreamReader sr;
             string line;
             sr = new StreamReader("E:\\Visual_Studio_2022\\EmlakciApp_FinalVizeOdevi\\EmlakciAppLib\\media\\kiralikevler.txt");
             line = sr.ReadToEnd();
             sr.Close();
+
             int count = 0;
             for (int i = 0; i < line.Length; i++)
             {
@@ -64,7 +65,7 @@ namespace EmlakciAppLib
                     {
                         j = i + 1;
                     }
-                    else{ break;}
+                    else { break; }
                     while (line[j] != ',')
                     {
                         deger += line[j].ToString();
@@ -74,7 +75,7 @@ namespace EmlakciAppLib
                     count++;
                     if (count == 1)
                     {
-                        odasay = deger;
+                        odasay = Convert.ToInt32(deger);
                     }
                     else if (count == 2)
                     {
@@ -91,12 +92,12 @@ namespace EmlakciAppLib
                     else if (count == 5)
                     {
                         kira = Convert.ToInt32(deger);
-                        kiralikEvler.Add(new KiralikEv(odasay,katsay,alan,depoz,kira));  // Nesneleri oluşturup Col a atma
+                        kiralikEvler.Add(new KiralikEv(odasay, katsay, alan, depoz, kira));  // Nesneleri oluşturup Col a atma
                         count = 0;
                     }
                     i = j - 1; // hız için
                 }
-                
+
             }
             return kiralikEvler;
         }

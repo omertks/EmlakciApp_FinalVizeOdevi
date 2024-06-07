@@ -8,9 +8,7 @@ namespace EmlakciApp_FinalVizeOdevi
         {
             for (; ; ) // ben ekledim aslında yoktu 
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("-----------------------------Emlakçı---Uygulaması----------------------------");
-                Console.ForegroundColor = ConsoleColor.White;
+                BaslikGoster("Emlakçı Uygulaması"); //
 
                 Console.WriteLine("1- Kiralık Ev \n2- Satılık Ev \n3- Programdan Çık");
                 string? secim1 = Console.ReadLine();
@@ -22,9 +20,8 @@ namespace EmlakciApp_FinalVizeOdevi
                     if (secim2 == "1")
                     {
                         Console.Clear(); /*    Silinebilir*/
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Kiralık Evler: ");
-                        Console.ForegroundColor = ConsoleColor.White;
+                        BaslikGoster("Kiralık Evler: "); //
+
                         Console.WriteLine();
                         List<KiralikEv> kayitlikiralikevler = KiralikEv.KiralikEvleriGetir(); //
                         Console.WriteLine();
@@ -40,8 +37,10 @@ namespace EmlakciApp_FinalVizeOdevi
                         int kacinciEv = 1;
                         do
                         {
+                            BaslikGoster("Kiralık Ev Kayıt"); //
+
                             Console.WriteLine(kacinciEv + ". Evin Oda Sayısı: ");
-                            string? odaSayisi = Console.ReadLine();
+                            int odaSayisi = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine(kacinciEv + ".Evin Kat Numarası: ");
                             int katNo = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine(kacinciEv + ".Evin Alanı: ");
@@ -55,7 +54,9 @@ namespace EmlakciApp_FinalVizeOdevi
                             ke.EvKaydet();
 
                             Console.WriteLine("Tamam(t)/ Devam(d)? ");
-                            kacinciEv++;
+
+                            kacinciEv++; //
+
                             td = Console.ReadLine().ToLower().Trim() == "d" ? true : false; //
                         } while (td);
                     }
@@ -72,9 +73,8 @@ namespace EmlakciApp_FinalVizeOdevi
                     if (secim2 == "1")
                     {
                         Console.Clear(); /*    Silinebilir*/
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Satılık Evler: ");
-                        Console.ForegroundColor = ConsoleColor.White;
+                        BaslikGoster("Satılık Evler: "); //
+
                         Console.WriteLine();
                         List<SatilikEv> kayitliSatilikEvler = SatilikEv.SatilikEvleriGetir(); //
                         Console.WriteLine();
@@ -90,8 +90,10 @@ namespace EmlakciApp_FinalVizeOdevi
                         int kacinciEv = 1;
                         do
                         {
+                            BaslikGoster("Satılık Ev Kayıt"); //
+
                             Console.WriteLine(kacinciEv + ". Evin Oda Sayısı: ");
-                            string odaSayisi = Console.ReadLine();
+                            int odaSayisi = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine(kacinciEv + ". Evin Kat Numarası: ");
                             int katNo = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine(kacinciEv + ". Evin Alanı: ");
@@ -101,7 +103,9 @@ namespace EmlakciApp_FinalVizeOdevi
 
                             SatilikEv se = new SatilikEv(odaSayisi, katNo, alan, fiyati); //
                             se.EvKaydet(); //
+
                             kacinciEv++;
+                            
                             Console.WriteLine("Tamam(t)/ Devam(d)? ");
                             td = Console.ReadLine().ToLower().Trim() == "d" ? true : false;
                         } while (td);
@@ -113,6 +117,10 @@ namespace EmlakciApp_FinalVizeOdevi
                 }
                 else if (secim1 == "3")
                 {
+                    BaslikGoster("Ömer Tekeş");
+                    BaslikGoster("23380101054");
+                    Console.WriteLine();
+                    BaslikGoster("Çıkış Yapıldı");
                     break; // 
                 }
                 else
@@ -127,6 +135,13 @@ namespace EmlakciApp_FinalVizeOdevi
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(mesaj); // Burayı Düzenle
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public static void BaslikGoster(string baslik)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"-----------------------------{baslik}----------------------------");
             Console.ForegroundColor = ConsoleColor.White;
         }
     }

@@ -1,5 +1,4 @@
 ﻿using EmlakciAppLib;
-using System.IO;
 
 namespace EmlakciApp_FinalVizeOdevi
 {
@@ -7,10 +6,10 @@ namespace EmlakciApp_FinalVizeOdevi
     {
         static void Main(string[] args)
         {
-            for (; ;) // ben ekledim aslında yoktu 
+            for (; ; ) // ben ekledim aslında yoktu 
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("-----------------------------Emlakçı---App----------------------------"); 
+                Console.WriteLine("-----------------------------Emlakçı---Uygulaması----------------------------");
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine("1- Kiralık Ev \n2- Satılık Ev \n3- Programdan Çık");
@@ -38,23 +37,25 @@ namespace EmlakciApp_FinalVizeOdevi
                     {
                         Console.Clear(); /*    Silinebilir*/
                         bool td;
+                        int kacinciEv = 1;
                         do
                         {
-                            Console.WriteLine("Evin Oda Sayısı: ");
+                            Console.WriteLine(kacinciEv + ". Evin Oda Sayısı: ");
                             string? odaSayisi = Console.ReadLine();
-                            Console.WriteLine("Evin Kat Numarası: ");
+                            Console.WriteLine(kacinciEv + ".Evin Kat Numarası: ");
                             int katNo = Convert.ToInt32(Console.ReadLine());
-                            Console.WriteLine("Evin Alanı: ");
+                            Console.WriteLine(kacinciEv + ".Evin Alanı: ");
                             int alan = Convert.ToInt32(Console.ReadLine());
-                            Console.WriteLine("Evin Kirası: ");
+                            Console.WriteLine(kacinciEv + ".Evin Kirası: ");
                             int kira = Convert.ToInt32(Console.ReadLine());
-                            Console.WriteLine("Evin Depozitosu: ");
+                            Console.WriteLine(kacinciEv + ".Evin Depozitosu: ");
                             int depozito = Convert.ToInt32(Console.ReadLine());
 
                             KiralikEv ke = new KiralikEv(odaSayisi, katNo, alan, depozito, kira);
                             ke.EvKaydet();
 
                             Console.WriteLine("Tamam(t)/ Devam(d)? ");
+                            kacinciEv++;
                             td = Console.ReadLine().ToLower().Trim() == "d" ? true : false; //
                         } while (td);
                     }
@@ -73,7 +74,7 @@ namespace EmlakciApp_FinalVizeOdevi
                         Console.Clear(); /*    Silinebilir*/
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Satılık Evler: ");
-                        Console.ForegroundColor= ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine();
                         List<SatilikEv> kayitliSatilikEvler = SatilikEv.SatilikEvleriGetir(); //
                         Console.WriteLine();
@@ -86,20 +87,21 @@ namespace EmlakciApp_FinalVizeOdevi
                     {
                         Console.Clear(); /*    Silinebilir*/
                         bool td;
+                        int kacinciEv = 1;
                         do
                         {
-                            Console.WriteLine("Evin Oda Sayısı: ");
+                            Console.WriteLine(kacinciEv + ". Evin Oda Sayısı: ");
                             string odaSayisi = Console.ReadLine();
-                            Console.WriteLine("Evin Kat Numarası: ");
+                            Console.WriteLine(kacinciEv + ". Evin Kat Numarası: ");
                             int katNo = Convert.ToInt32(Console.ReadLine());
-                            Console.WriteLine("Evin Alanı: ");
+                            Console.WriteLine(kacinciEv + ". Evin Alanı: ");
                             int alan = Convert.ToInt32(Console.ReadLine());
-                            Console.WriteLine("Evin Fiyatı: ");
+                            Console.WriteLine(kacinciEv + ". Evin Fiyatı: ");
                             int fiyati = Convert.ToInt32(Console.ReadLine());
 
                             SatilikEv se = new SatilikEv(odaSayisi, katNo, alan, fiyati); //
                             se.EvKaydet(); //
-
+                            kacinciEv++;
                             Console.WriteLine("Tamam(t)/ Devam(d)? ");
                             td = Console.ReadLine().ToLower().Trim() == "d" ? true : false;
                         } while (td);

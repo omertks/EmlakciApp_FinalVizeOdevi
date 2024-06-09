@@ -14,14 +14,14 @@ namespace EmlakciApp_FinalVizeOdevi
                 string? secim1 = Console.ReadLine();
                 if (secim1 == "1")
                 {
-                    Console.Clear(); /*   Silinebilir*/
+                    Console.Clear(); /*  */
                     BaslikGoster("Kiralık Evler");
 
                     Console.WriteLine("1- Kayıtlı Ev Görüntüle \n2- Yeni Ev Gir");
                     string? secim2 = Console.ReadLine();
                     if (secim2 == "1")
                     {
-                        Console.Clear(); /*    Silinebilir*/
+                        Console.Clear(); /* */
                         BaslikGoster("Kiralık Evler"); //
                         Console.WriteLine("Filtreleme Yapmak İster misiniz? (e/h) ");
                         string filtre = Console.ReadLine().Trim().ToLower();

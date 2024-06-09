@@ -6,14 +6,14 @@ namespace EmlakciAppLib
 {
     public abstract class Ev:Object
     {
-        protected int odaSayisi { get; set; }
+        protected int odaSayisi { get; set; } //
         protected int katNumarasi { get; set; }
         protected int alani { get; set; }
 
         public Ev(int odaSayisi, int katNumarasi, int alani)
         {
-            this.odaSayisi = Convert.ToInt32(odaSayisi);
             this.katNumarasi = katNumarasi;
+            this.odaSayisi = Ev.PozitifKontrol(odaSayisi, "Oda Sayısı"); //
             this.alani = Ev.PozitifKontrol(alani,"Alan");
         }
 

@@ -25,7 +25,6 @@ namespace EmlakciAppLib
             Console.WriteLine($"Oda Sayısı: {this.odaSayisi}\t KatNo: {this.katNumarasi}\t Alanı: {this.alani} m{Convert.ToChar(178)}\t Kira: {this.kirasi} TL\t Depozitosu: {this.depozito} Tl");
             Console.WriteLine();
         }
-
         public override void EvKaydet()
         {
             string line;
@@ -61,7 +60,7 @@ namespace EmlakciAppLib
                 {
                     string deger = "";
                     int j = 0;
-                    if (line.Length >= i + 1)
+                    if (line.Length >= i + 1) //
                     {
                         j = i + 1;
                     }

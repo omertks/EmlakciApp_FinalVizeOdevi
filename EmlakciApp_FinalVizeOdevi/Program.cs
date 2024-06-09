@@ -15,12 +15,14 @@ namespace EmlakciApp_FinalVizeOdevi
                 if (secim1 == "1")
                 {
                     Console.Clear(); /*   Silinebilir*/
+                    BaslikGoster("Kiralık Evler");
+
                     Console.WriteLine("1- Kayıtlı Ev Görüntüle \n2- Yeni Ev Gir");
                     string? secim2 = Console.ReadLine();
                     if (secim2 == "1")
                     {
                         Console.Clear(); /*    Silinebilir*/
-                        BaslikGoster("Kiralık Evler: "); //
+                        BaslikGoster("Kiralık Evler"); //
 
                         Console.WriteLine();
                         List<KiralikEv> kayitlikiralikevler = KiralikEv.KiralikEvleriGetir(); //
@@ -68,6 +70,7 @@ namespace EmlakciApp_FinalVizeOdevi
                 else if (secim1 == "2")
                 {
                     Console.Clear(); /*    Silinebilir*/
+                    BaslikGoster("Satılık Evler");
                     Console.WriteLine("1- Kayıtlı Ev Görüntüle \n2- Yeni Ev Gir");
                     string secim2 = Console.ReadLine();
                     if (secim2 == "1")
@@ -141,7 +144,7 @@ namespace EmlakciApp_FinalVizeOdevi
         public static void BaslikGoster(string baslik)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"-----------------------------{baslik}----------------------------");
+            Console.WriteLine($"----------------------------- {baslik} -----------------------------");
             Console.ForegroundColor = ConsoleColor.White;
         }
     }

@@ -35,10 +35,6 @@ namespace EmlakciApp_FinalVizeOdevi
                             Console.WriteLine();
                             kayitlikiralikevler = KiralikEv.Filtrele(); //
                             Console.WriteLine();
-                            foreach (KiralikEv item in kayitlikiralikevler)
-                            {
-                                item.EvYazdir();
-                            }
                         }
                         else if (filtre == "h")
                         {
@@ -49,7 +45,7 @@ namespace EmlakciApp_FinalVizeOdevi
                         }
                         else
                         {
-                            Console.WriteLine("Hatalı Seçim !!!");
+                            HataDondur("Hatalı Seçim");
                         }
                         foreach (KiralikEv item in kayitlikiralikevler)
                         {

@@ -25,7 +25,7 @@ namespace EmlakciApp_FinalVizeOdevi
                         BaslikGoster("Kiralık Evler"); //
                         Console.WriteLine("Filtreleme Yapmak İster misiniz? (e/h) ");
                         string filtre = Console.ReadLine().Trim().ToLower();
-                        if (filtre == "e")  // Filtreleme İstenmezse Sil if i
+                        if (filtre == "e")  // Filtreleme İstenmezse Sil if i ve metodu
                         {
                             Console.WriteLine();
                             List<KiralikEv> kayitlikiralikevler = KiralikEv.Filtrele(); //
@@ -94,7 +94,7 @@ namespace EmlakciApp_FinalVizeOdevi
 
                         Console.WriteLine("Filtreleme Yapmak İster misiniz? (e/h) ");
                         string filtre = Console.ReadLine().Trim().ToLower();
-                        if (filtre == "e")  // Filtreleme İstenmezse Sil if i
+                        if (filtre == "e")  // Filtreleme İstenmezse Sil if i ve metodu
                         {
                             Console.WriteLine();
                             List<SatilikEv> kayitliSatilikEvler = SatilikEv.Filtrele(); //

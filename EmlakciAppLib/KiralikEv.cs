@@ -5,6 +5,7 @@ using System.Text;
 
 using System.IO; //
 using System.Security.Cryptography;
+using System.ComponentModel;
 
 
 namespace EmlakciAppLib
@@ -99,6 +100,53 @@ namespace EmlakciAppLib
 
             }
             return kiralikEvler;
+        }
+
+
+
+
+
+        // Filtreleme İstenmezse Sil
+        public static List<KiralikEv> Filtrele()
+        {
+            List<KiralikEv> kiralikEvler = KiralikEvleriGetir(); //
+            List<KiralikEv> cikti = new List<KiralikEv> ();
+
+            Console.WriteLine("Hangisine Göre Filtrelensin:\n1-)Oda Sayısı\n2-)Alan\n3-)Kira\n4-)Depozito");
+            string secim = Console.ReadLine();
+            Console.WriteLine("Minimum değer: ");
+            int minDeger = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Maximum değer: ");
+            int maxDeger = Convert.ToInt32(Console.ReadLine());
+            int kosulDegeri = 0;
+
+            foreach (KiralikEv item in kiralikEvler)
+            {
+                switch (secim)
+                {
+                    case "1":
+                        kosulDegeri = item.odaSayisi;
+                        break;
+                    case "2":
+                        kosulDegeri = item.alani;
+                        break;
+                    case "3":
+                        kosulDegeri = item.kirasi;
+                        break;
+                    case "4":
+                        kosulDegeri = item.depozito;
+                        break;
+                    default: Console.WriteLine("Hatalı Seçim Yaptınız!!!");
+                        break;
+                }
+
+                if (kosulDegeri >= minDeger && kosulDegeri <= maxDeger)
+                {
+                    cikti.Add(item);
+                }
+
+            }
+            return cikti;
         }
 
     }

@@ -6,7 +6,7 @@ namespace EmlakciApp_FinalVizeOdevi
     {
         static void Main(string[] args)
         {
-            for (; ; ) // ben ekledim aslında yoktu 
+            for (; ; ) 
             {
                 BaslikGoster("Emlakçı Uygulaması"); //
 
@@ -23,13 +23,27 @@ namespace EmlakciApp_FinalVizeOdevi
                     {
                         Console.Clear(); /*    Silinebilir*/
                         BaslikGoster("Kiralık Evler"); //
-
-                        Console.WriteLine();
-                        List<KiralikEv> kayitlikiralikevler = KiralikEv.KiralikEvleriGetir(); //
-                        Console.WriteLine();
-                        foreach (KiralikEv item in kayitlikiralikevler)
+                        Console.WriteLine("Filtreleme Yapmak İster misiniz? (e/h) ");
+                        string filtre = Console.ReadLine().Trim().ToLower();
+                        if (filtre == "e")  // Filtreleme İstenmezse Sil if i
                         {
-                            item.EvYazdir();
+                            Console.WriteLine();
+                            List<KiralikEv> kayitlikiralikevler = KiralikEv.Filtrele(); //
+                            Console.WriteLine();
+                            foreach (KiralikEv item in kayitlikiralikevler)
+                            {
+                                item.EvYazdir();
+                            }
+                        }
+                        else if (filtre == "h")
+                        {
+                            Console.WriteLine();
+                            List<KiralikEv> kayitlikiralikevler = KiralikEv.KiralikEvleriGetir(); //
+                            Console.WriteLine();
+                            foreach (KiralikEv item in kayitlikiralikevler)
+                            {
+                                item.EvYazdir();
+                            }
                         }
                     }
                     else if (secim2 == "2")
@@ -78,13 +92,30 @@ namespace EmlakciApp_FinalVizeOdevi
                         Console.Clear(); /*    Silinebilir*/
                         BaslikGoster("Satılık Evler: "); //
 
-                        Console.WriteLine();
-                        List<SatilikEv> kayitliSatilikEvler = SatilikEv.SatilikEvleriGetir(); //
-                        Console.WriteLine();
-                        foreach (SatilikEv item in kayitliSatilikEvler)
+                        Console.WriteLine("Filtreleme Yapmak İster misiniz? (e/h) ");
+                        string filtre = Console.ReadLine().Trim().ToLower();
+                        if (filtre == "e")  // Filtreleme İstenmezse Sil if i
                         {
-                            item.EvYazdir();
+                            Console.WriteLine();
+                            List<SatilikEv> kayitliSatilikEvler = SatilikEv.Filtrele(); //
+                            Console.WriteLine();
+                            foreach (SatilikEv item in kayitliSatilikEvler)
+                            {
+                                item.EvYazdir();
+                            }
                         }
+                        else if (filtre == "h")
+                        {
+                            Console.WriteLine();
+                            List<SatilikEv> kayitliSatilikEvler = SatilikEv.SatilikEvleriGetir(); //
+                            Console.WriteLine();
+                            foreach (SatilikEv item in kayitliSatilikEvler)
+                            {
+                                item.EvYazdir();
+                            }
+                        }
+
+                        
                     }
                     else if (secim1 == "2")
                     {
@@ -108,7 +139,7 @@ namespace EmlakciApp_FinalVizeOdevi
                             se.EvKaydet(); //
 
                             kacinciEv++;
-                            
+
                             Console.WriteLine("Tamam(t)/ Devam(d)? ");
                             td = Console.ReadLine().ToLower().Trim() == "d" ? true : false;
                         } while (td);
@@ -137,7 +168,7 @@ namespace EmlakciApp_FinalVizeOdevi
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(mesaj); // Burayı Düzenle
+            Console.WriteLine(mesaj); 
             Console.ForegroundColor = ConsoleColor.White;
         }
 

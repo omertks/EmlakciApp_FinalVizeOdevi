@@ -89,5 +89,49 @@ namespace EmlakciAppLib
             }
             return satilikEvler;
         }
+
+
+
+
+        // Filtreleme İstenmezse Sil
+        public static List<SatilikEv> Filtrele()
+        {
+            List<SatilikEv> kiralikEvler = SatilikEvleriGetir(); //
+            List<SatilikEv> cikti = new List<SatilikEv>();
+
+            Console.WriteLine("Hangisine Göre Filtrelensin:\n1-)Oda Sayısı\n2-)Alan\n3-)Fiyat");
+            string secim = Console.ReadLine();
+            Console.WriteLine("Minimum değer: ");
+            int minDeger = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Maximum değer: ");
+            int maxDeger = Convert.ToInt32(Console.ReadLine());
+            int kosulDegeri = 0;
+
+            foreach (SatilikEv item in kiralikEvler)
+            {
+                switch (secim)
+                {
+                    case "1":
+                        kosulDegeri = item.odaSayisi;
+                        break;
+                    case "2":
+                        kosulDegeri = item.alani;
+                        break;
+                    case "3":
+                        kosulDegeri = item.fiyati;
+                        break;
+                    default:
+                        Console.WriteLine("Hatalı Seçim Yaptınız!!!");
+                        break;
+                }
+
+                if (kosulDegeri >= minDeger && kosulDegeri <= maxDeger)
+                {
+                    cikti.Add(item);
+                }
+
+            }
+            return cikti;
+        }
     }
 }

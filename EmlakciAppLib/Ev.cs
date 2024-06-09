@@ -20,6 +20,7 @@ namespace EmlakciAppLib
         public abstract void EvYazdir(); //
         public abstract void EvKaydet(); //
 
+
         public static int PozitifKontrol(int deger,string degerAdi)
         {
             for (; ; ) 

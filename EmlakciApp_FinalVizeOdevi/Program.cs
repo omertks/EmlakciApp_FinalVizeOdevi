@@ -109,13 +109,13 @@ namespace EmlakciApp_FinalVizeOdevi
                         if (filtre == "e")  // Filtreleme İstenmezse Sil if i ve metodu
                         {
                             Console.WriteLine();
-                            kayitliSatilikEvler = SatilikEv.Filtrele(); //
+                            kayitliSatilikEvler = SatilikEv.Filtrele(); 
                             Console.WriteLine();
                         }
                         else if (filtre == "h")
                         {
                             Console.WriteLine();
-                            kayitliSatilikEvler = SatilikEv.SatilikEvleriGetir(); //
+                            kayitliSatilikEvler = SatilikEv.SatilikEvleriGetir(); 
                             Console.WriteLine();
                         }
                         else

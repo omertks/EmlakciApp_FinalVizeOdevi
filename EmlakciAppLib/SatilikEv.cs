@@ -61,7 +61,7 @@ namespace EmlakciAppLib
                     while (line[j] != ',')
                     {
                         deger += line[j].ToString();
-                        if (line.Length != j + 1) { j++; } // Arraydan taşmamak için
+                        if (line.Length != j + 1) { j++; } // 
                         else { break; }
                     }
                     count++;
@@ -80,10 +80,10 @@ namespace EmlakciAppLib
                     else if (count == 4)
                     {
                         fiyati = Convert.ToInt32(deger);
-                        satilikEvler.Add(new SatilikEv(odasay, katsay, alan, fiyati));  // Nesneleri oluşturup Collections a atma
+                        satilikEvler.Add(new SatilikEv(odasay, katsay, alan, fiyati));  // 
                         count = 0;
                     }
-                    i = j - 1; // hızı arttırmak için
+                    i = j - 1; // 
                 }
 
             }

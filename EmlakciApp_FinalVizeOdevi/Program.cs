@@ -82,9 +82,8 @@ namespace EmlakciApp_FinalVizeOdevi
 
                             Console.WriteLine("Tamam(t)/ Devam(d)? ");
 
-                            kacinciEv++; //
-
                             td = Console.ReadLine().ToLower().Trim() == "d" ? true : false; //
+                            kacinciEv++; //
                         } while (td);
                     }
                     else
@@ -92,6 +91,9 @@ namespace EmlakciApp_FinalVizeOdevi
                         HataDondur("Hatalı Seçim");
                     }
                 }
+
+
+
                 else if (secim1 == "2")
                 {
                     Console.Clear(); /*    Silinebilir*/
@@ -181,7 +183,7 @@ namespace EmlakciApp_FinalVizeOdevi
             }
         }
 
-        public static void HataDondur(string mesaj) // static ?
+        public static void HataDondur(string mesaj) // 
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;

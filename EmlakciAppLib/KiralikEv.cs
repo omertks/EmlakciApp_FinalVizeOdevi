@@ -69,7 +69,7 @@ namespace EmlakciAppLib
                     while (line[j] != ',')
                     {
                         deger += line[j].ToString();
-                        if (line.Length != j + 1) { j++; } // Arraydan taşmamak için
+                        if (line.Length != j + 1) { j++; } // 
                         else { break; }
                     }
                     count++;
@@ -92,10 +92,10 @@ namespace EmlakciAppLib
                     else if (count == 5)
                     {
                         kira = Convert.ToInt32(deger);
-                        kiralikEvler.Add(new KiralikEv(odasay, katsay, alan, depoz, kira));  // Nesneleri oluşturup Col a atma
+                        kiralikEvler.Add(new KiralikEv(odasay, katsay, alan, depoz, kira));  // 
                         count = 0;
                     }
-                    i = j - 1; // hız için
+                    i = j - 1; // 
                 }
 
             }
